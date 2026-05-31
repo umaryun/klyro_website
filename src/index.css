@@ -1,1 +1,133 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap'); */
+
 @import 'tailwindcss';
+
+@theme {
+  --color-klyro-dark: #070707;
+  --color-klyro-navy: #0E1F5B;
+  --color-klyro-blue: #6EB3FF80;
+  --color-klyro-light-blue: #73FFFF;
+  --color-klyro-accent: #3b6ce7;
+  --color-klyro-cta: #4570d4;
+  --color-klyro-text: #c5cfe0;
+  --color-klyro-white: #FDFDFF;
+  --color-klyro-outline: #1e2a4a;
+  --color-klyro-btn-outline: #2a3a5e;
+
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-klyro-dark);
+    color: var(--color-klyro-text);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+}
+
+/* Google Fonts import */
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0.2;
+    transform: translateX(90px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up-delay-1 {
+  animation: fadeInUp 0.8s ease-out 0.15s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation: fadeInUp 0.8s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-3 {
+  animation: fadeInUp 0.8s ease-out 0.45s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: subtleFloat 5s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes subtleZoom {
+  0% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1.12);
+  }
+}
+
+.animate-subtle-zoom {
+  animation: subtleZoom 25s ease-in-out infinite alternate;
+}
+
