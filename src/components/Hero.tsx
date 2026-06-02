@@ -14,6 +14,7 @@ export default function Hero() {
           className="w-full h-full object-cover object-center scale-105 animate-subtle-zoom"
         />
         
+        
         <div 
           className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,rgba(7,7,7,0.85)_80%)]" 
         />
