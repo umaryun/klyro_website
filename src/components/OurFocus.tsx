@@ -1,8 +1,8 @@
 import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
-import blobImg from '../assets/blob.png';
-import dnaImg from '../assets/dna.png';
-import techImg from '../assets/tech.png';
+import blobImg from '../../public/creativityimage.png';
+import dnaImg from '../../public/growthimage.png';
+import techImg from '../../public/techimage.png';
 
 const focusData = [
   {
