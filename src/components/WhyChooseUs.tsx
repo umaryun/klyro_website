@@ -99,7 +99,7 @@ function FeatureCard({ icon, text, style }: { icon: React.ReactNode; text: strin
       <span className="text-[#73FFFF]">
         {icon}
       </span>
-      <p className="text-klyro-text/70 text-[0.85rem] leading-[1.6] font-light font-[var(--font-body)]">
+      <p className="text-klyro-text/70 text-[0.85rem] leading-[1.6] font-[var(--font-body)]">
         {text}
       </p>
     </div>

@@ -26,7 +26,7 @@ export default function AboutUs() {
 
             {/* Description */}
             <p
-              className="text-[1.05rem] leading-[1.85] text-klyro-text font-light max-w-[500px] mb-10 font-[var(--font-body)]"
+              className="text-[1.05rem] leading-[1.85] text-klyro-text max-w-[500px] mb-10 font-[var(--font-body)]"
             >
               We help businesses grow and scale impactful digital solutions by combining creativity, technology, and growth-driven strategies. From brand identity to marketing and scalable tech, we partner with you to build experiences that bring long-term success and systems that deliver real results.
             </p>

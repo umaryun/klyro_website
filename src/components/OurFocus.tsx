@@ -308,13 +308,11 @@ export default function OurFocus() {
     rotationRef.current = v;
   });
 
-  // Active index for step indicator
-  const activeIndex = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [0, 0, 1, 2]);
 
   return (
     <section
       ref={containerRef}
-      className="relative h-[300vh] bg-[#0d1117] text-white"
+      className="relative h-[610vh] bg-[#0d1117] text-white"
     >
       <div className="sticky top-0 h-screen w-full flex flex-col items-center overflow-hidden">
         {/* Header */}
@@ -355,11 +353,6 @@ export default function OurFocus() {
                         index={index}
                         scrollYProgress={scrollYProgress}
                       />
-                      {/* <FocusImageReflection
-                        data={data}
-                        index={index}
-                        scrollYProgress={scrollYProgress}
-                      /> */}
                     </div>
                   ))}
                 </div>
@@ -393,33 +386,6 @@ export default function OurFocus() {
   );
 }
 
-/* ─── Step Dot ─── */
-
-function StepDot({
-  index,
-  activeIndex,
-}: {
-  index: number;
-  activeIndex: ReturnType<typeof useTransform<number>>;
-}) {
-  const isActive = useTransform(activeIndex, (v: number) =>
-    Math.round(v) === index ? 1 : 0
-  );
-  const dotScale = useTransform(isActive, [0, 1], [1, 1.5]);
-  const dotOpacity = useTransform(isActive, [0, 1], [0.25, 1]);
-
-  return (
-    <motion.div
-      className="rounded-full bg-[#4a7cff]"
-      style={{
-        width: 6,
-        height: 6,
-        scale: dotScale,
-        opacity: dotOpacity,
-      }}
-    />
-  );
-}
 
 /* ─── Animations ─── */
 
@@ -463,34 +429,6 @@ function FocusImage({ data, index, scrollYProgress }: any) {
   );
 }
 
-// function FocusImageReflection({ data, index, scrollYProgress }: any) {
-//   const anim = imageAnimations[index];
-//   const opacity = useTransform(scrollYProgress, anim.input, anim.opacity, { clamp: true });
-//   const scale = useTransform(scrollYProgress, anim.input, anim.scale, { clamp: true });
-
-//   // Soft, beautiful reflection opacity (fades on scroll exactly like the real image)
-//   const reflectOpacity = useTransform(opacity, (o: number) => o * 0.16);
-
-//   return (
-//     <motion.img
-//       src={data.image}
-//       alt=""
-//       style={{
-//         opacity: reflectOpacity,
-//         scale,
-//         scaleY: -1,
-//         y: 132, // Positioned symmetrically under the reflected base
-//         mixBlendMode: 'lighten',
-//         filter: 'blur(1.5px)',
-//         maskImage:
-//           'linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 80%)',
-//         WebkitMaskImage:
-//           'linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 80%)',
-//       }}
-//       className="absolute w-[120px] h-[120px] object-contain z-0 pointer-events-none select-none"
-//     />
-//   );
-// }
 
 function FocusText({ data, index, scrollYProgress }: any) {
   const anim = textAnimations[index];
@@ -502,16 +440,6 @@ function FocusText({ data, index, scrollYProgress }: any) {
       style={{ opacity, y }}
       className="absolute top-1/2 -translate-y-[50%] left-0 w-full"
     >
-      {/* Number accent */}
-      {/* <span
-        className="text-[5rem] font-black leading-none absolute -left-2 -top-10 pointer-events-none select-none font-[var(--font-heading)]"
-        style={{
-          color: 'transparent',
-          WebkitTextStroke: `1px ${data.color}20`,
-        }}
-      >
-        0{index + 1}
-      </span> */}
       <div className="relative z-10">
         <h3
           className="text-2xl md:text-3xl font-bold mb-3 font-[var(--font-heading)]"
@@ -525,7 +453,7 @@ function FocusText({ data, index, scrollYProgress }: any) {
             background: `linear-gradient(90deg, ${data.color}, transparent)`,
           }}
         />
-        <p className="text-[1.05rem] leading-[1.8] text-white font-light max-w-[420px]">
+        <p className="text-[1.05rem] leading-[1.8] text-white max-w-[420px]">
           {data.description}
         </p>
       </div>

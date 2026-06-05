@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import KlyroLogo from './KlyroLogo';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -12,7 +11,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-[#0707074D]">
+    <header className="fixed top-0 left-0 w-full z-50 bg-[#0707074D] backdrop-blur-sm">
       <nav
         className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 lg:px-12"
         aria-label="Main navigation"

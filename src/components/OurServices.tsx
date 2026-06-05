@@ -46,7 +46,7 @@ function ServiceCard({ num, title, description }: { num: string; title: string; 
       <h3 className="text-[#6EB3FF] text-[1.05rem] font-bold font-[var(--font-heading)] leading-snug">
         {title}
       </h3>
-      <p className="text-klyro-text text-[0.85rem] leading-[1.6] font-light font-[var(--font-body)] max-w-[260px]">
+      <p className="text-klyro-text text-[0.85rem] leading-[1.6] font-[var(--font-body)] max-w-[260px]">
         {description}
       </p>
     </div>
@@ -61,7 +61,7 @@ export default function OurServices() {
     >
       <div className="max-w-5xl mx-auto px-6 md:px-12 py-20 md:py-28">
         {/* Section Heading */}
-        <h2 className="text-center text-[#8B949E] text-[clamp(1.8rem,4vw,2.6rem)] font-bold italic font-[var(--font-heading)] tracking-tight mb-16 md:mb-20">
+        <h2 className="text-center text-[#8B949E] text-[clamp(1.8rem,4vw,2.6rem)] font-bold font-[var(--font-heading)] tracking-tight mb-16 md:mb-20">
           Our Services
         </h2>
 

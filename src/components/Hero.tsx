@@ -39,7 +39,7 @@ export default function Hero() {
               </h1>
 
               {/* Subtext */}
-              <p className="mt-7 mx-auto max-w-[460px] text-[clamp(0.95rem,1.5vw,1.1rem)] leading-[1.75] text-klyro-white font-light animate-fade-in-up-delay-2">
+              <p className="mt-7 mx-auto max-w-[460px] text-[clamp(0.95rem,1.5vw,1.1rem)] leading-[1.75] text-klyro-white animate-fade-in-up-delay-2">
                 We partner with ambitious businesses to design, build and scale
                 intelligent digital solutions. Creating brands, products and
                 experiences that drive real results and brings long-term success.
