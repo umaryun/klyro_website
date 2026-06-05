@@ -11,7 +11,7 @@ const focusData = [
     description:
       'We create distinctive brand identities and visual systems that communicate clearly and leave lasting impressions. By combining design, storytelling and strategy, we help businesses stand out to their audience.',
     image: blobImg,
-    color: '#3b82f6',
+    color: '#6EB3FF80',
     glowColor: 'rgba(59, 130, 246, 0.4)',
   },
   {
@@ -20,7 +20,7 @@ const focusData = [
     description:
       'We build structured marketing systems that attract, convert, and retain customers effectively. Through data-driven strategies and continuous optimization, we position businesses for sustainable and measurable growth.',
     image: dnaImg,
-    color: '#06b6d4',
+    color: '#6EB3FF80',
     glowColor: 'rgba(6, 182, 212, 0.4)',
   },
   {
@@ -29,7 +29,7 @@ const focusData = [
     description:
       'We develop scalable digital solutions that streamline operations and support long-term performance. From websites to automation systems, our technology is built to be efficient, reliable and future ready.',
     image: techImg,
-    color: '#0ea5e9',
+    color: '#6EB3FF80',
     glowColor: 'rgba(14, 165, 233, 0.4)',
   },
 ];
@@ -346,7 +346,7 @@ export default function OurFocus() {
               <PyramidCanvas rotationRef={rotationRef} />
 
               {/* Centered Image Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ marginTop: '20px' }}>
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ marginTop: '70px' }}>
                 <div className="relative w-[230px] h-[230px] flex items-center justify-center">
                   {focusData.map((data, index) => (
                     <div key={data.id} className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -355,11 +355,11 @@ export default function OurFocus() {
                         index={index}
                         scrollYProgress={scrollYProgress}
                       />
-                      <FocusImageReflection
+                      {/* <FocusImageReflection
                         data={data}
                         index={index}
                         scrollYProgress={scrollYProgress}
-                      />
+                      /> */}
                     </div>
                   ))}
                 </div>
@@ -368,16 +368,15 @@ export default function OurFocus() {
           </div>
 
           {/* Right: Text + Step Indicator */}
-          <div className="w-full md:w-1/2 flex items-center justify-center relative">
+          <div className="w-full md:w-1/2 flex justify-center">
             {/* Step indicator dots */}
-            <div className="hidden md:flex flex-col items-center gap-3 absolute left-0 top-1/2 -translate-y-1/2">
-              {focusData.map((_, i) => (
-                <StepDot key={i} index={i} activeIndex={activeIndex} />
-              ))}
+            <div className="hidden md:flex">
+              <img src="/focusline.png" alt="focus line" className='w-40 h-50' />
+              
             </div>
 
             {/* Text area */}
-            <div className="relative h-[280px] w-full max-w-[480px] md:ml-12">
+            <div className="h-[280px] w-full max-w-[480px] md:ml-4 relative">
               {focusData.map((data, index) => (
                 <FocusText
                   key={data.id}
@@ -424,30 +423,27 @@ function StepDot({
 
 /* ─── Animations ─── */
 
+// Each item covers the FULL [0,1] range with opacity pinned to 0 outside its active zone.
+// This prevents useTransform from extrapolating non-zero values outside the defined range.
 const imageAnimations = [
-  { input: [0, 0.15, 0.35], opacity: [1, 1, 0], scale: [1, 1, 0.85] },
-  {
-    input: [0.15, 0.35, 0.65, 0.85],
-    opacity: [0, 1, 1, 0],
-    scale: [0.85, 1, 1, 0.85],
-  },
-  { input: [0.65, 0.85, 1.0], opacity: [0, 1, 1], scale: [0.85, 1, 1] },
+  //  Item 0: visible 0–0.28, fades out 0.28–0.33, stays at 0 after
+  { input: [0, 0.28, 0.33, 0.34, 1.0], opacity: [1, 1, 0, 0, 0], scale: [1, 1, 0.85, 0.85, 0.85] },
+  //  Item 1: 0 before, fades in 0.33–0.38, visible 0.38–0.61, fades out 0.61–0.66, 0 after
+  { input: [0, 0.32, 0.33, 0.38, 0.61, 0.66, 0.67, 1.0], opacity: [0, 0, 0, 1, 1, 0, 0, 0], scale: [0.85, 0.85, 0.85, 1, 1, 0.85, 0.85, 0.85] },
+  //  Item 2: 0 before, fades in 0.66–0.71, visible until end
+  { input: [0, 0.65, 0.66, 0.71, 1.0], opacity: [0, 0, 0, 1, 1], scale: [0.85, 0.85, 0.85, 1, 1] },
 ];
 
 const textAnimations = [
-  { input: [0, 0.15, 0.35], opacity: [1, 1, 0], y: [0, 0, -60] },
-  {
-    input: [0.15, 0.35, 0.65, 0.85],
-    opacity: [0, 1, 1, 0],
-    y: [60, 0, 0, -60],
-  },
-  { input: [0.65, 0.85, 1.0], opacity: [0, 1, 1], y: [60, 0, 0] },
+  { input: [0, 0.28, 0.33, 0.34, 1.0], opacity: [1, 1, 0, 0, 0], y: [0, 0, -60, -60, -60] },
+  { input: [0, 0.32, 0.33, 0.38, 0.61, 0.66, 0.67, 1.0], opacity: [0, 0, 0, 1, 1, 0, 0, 0], y: [60, 60, 60, 0, 0, -60, -60, -60] },
+  { input: [0, 0.65, 0.66, 0.71, 1.0], opacity: [0, 0, 0, 1, 1], y: [60, 60, 60, 0, 0] },
 ];
 
 function FocusImage({ data, index, scrollYProgress }: any) {
   const anim = imageAnimations[index];
-  const opacity = useTransform(scrollYProgress, anim.input, anim.opacity);
-  const scale = useTransform(scrollYProgress, anim.input, anim.scale);
+  const opacity = useTransform(scrollYProgress, anim.input, anim.opacity, { clamp: true });
+  const scale = useTransform(scrollYProgress, anim.input, anim.scale, { clamp: true });
 
   return (
     <motion.img
@@ -462,52 +458,52 @@ function FocusImage({ data, index, scrollYProgress }: any) {
         WebkitMaskImage:
           'radial-gradient(circle at 50% 50%, black 35%, transparent 70%)',
       }}
-      className="absolute w-[170px] h-[170px] object-contain z-10"
+      className="absolute w-[320px] h-[320px] object-contain z-10"
     />
   );
 }
 
-function FocusImageReflection({ data, index, scrollYProgress }: any) {
-  const anim = imageAnimations[index];
-  const opacity = useTransform(scrollYProgress, anim.input, anim.opacity);
-  const scale = useTransform(scrollYProgress, anim.input, anim.scale);
+// function FocusImageReflection({ data, index, scrollYProgress }: any) {
+//   const anim = imageAnimations[index];
+//   const opacity = useTransform(scrollYProgress, anim.input, anim.opacity, { clamp: true });
+//   const scale = useTransform(scrollYProgress, anim.input, anim.scale, { clamp: true });
 
-  // Soft, beautiful reflection opacity (fades on scroll exactly like the real image)
-  const reflectOpacity = useTransform(opacity, (o) => o * 0.16);
+//   // Soft, beautiful reflection opacity (fades on scroll exactly like the real image)
+//   const reflectOpacity = useTransform(opacity, (o: number) => o * 0.16);
 
-  return (
-    <motion.img
-      src={data.image}
-      alt=""
-      style={{
-        opacity: reflectOpacity,
-        scale,
-        scaleY: -1,
-        y: 132, // Positioned symmetrically under the reflected base
-        mixBlendMode: 'lighten',
-        filter: 'blur(1.5px)',
-        maskImage:
-          'linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 80%)',
-        WebkitMaskImage:
-          'linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 80%)',
-      }}
-      className="absolute w-[170px] h-[170px] object-contain z-0 pointer-events-none select-none"
-    />
-  );
-}
+//   return (
+//     <motion.img
+//       src={data.image}
+//       alt=""
+//       style={{
+//         opacity: reflectOpacity,
+//         scale,
+//         scaleY: -1,
+//         y: 132, // Positioned symmetrically under the reflected base
+//         mixBlendMode: 'lighten',
+//         filter: 'blur(1.5px)',
+//         maskImage:
+//           'linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 80%)',
+//         WebkitMaskImage:
+//           'linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 80%)',
+//       }}
+//       className="absolute w-[120px] h-[120px] object-contain z-0 pointer-events-none select-none"
+//     />
+//   );
+// }
 
 function FocusText({ data, index, scrollYProgress }: any) {
   const anim = textAnimations[index];
-  const y = useTransform(scrollYProgress, anim.input, anim.y);
-  const opacity = useTransform(scrollYProgress, anim.input, anim.opacity);
+  const y = useTransform(scrollYProgress, anim.input, anim.y, { clamp: true });
+  const opacity = useTransform(scrollYProgress, anim.input, anim.opacity, { clamp: true });
 
   return (
     <motion.div
       style={{ opacity, y }}
-      className="absolute top-1/2 -translate-y-1/2 left-0 w-full"
+      className="absolute top-1/2 -translate-y-[50%] left-0 w-full"
     >
       {/* Number accent */}
-      <span
+      {/* <span
         className="text-[5rem] font-black leading-none absolute -left-2 -top-10 pointer-events-none select-none font-[var(--font-heading)]"
         style={{
           color: 'transparent',
@@ -515,7 +511,7 @@ function FocusText({ data, index, scrollYProgress }: any) {
         }}
       >
         0{index + 1}
-      </span>
+      </span> */}
       <div className="relative z-10">
         <h3
           className="text-2xl md:text-3xl font-bold mb-3 font-[var(--font-heading)]"
@@ -524,12 +520,12 @@ function FocusText({ data, index, scrollYProgress }: any) {
           {data.title}
         </h3>
         <div
-          className="w-12 h-[2px] rounded-full mb-5"
+          className="w-24 h-[2px] rounded-full mb-5"
           style={{
             background: `linear-gradient(90deg, ${data.color}, transparent)`,
           }}
         />
-        <p className="text-[1.05rem] leading-[1.8] text-gray-400 font-light max-w-[420px]">
+        <p className="text-[1.05rem] leading-[1.8] text-white font-light max-w-[420px]">
           {data.description}
         </p>
       </div>
