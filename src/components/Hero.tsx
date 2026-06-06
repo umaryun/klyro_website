@@ -1,4 +1,3 @@
-import heroCubes from '../assets/hero-cubes.png';
 
 export default function Hero() {
   return (
