@@ -37,6 +37,7 @@ const services = [
   },
 ];
 
+
 function ServiceCard({ num, title, description }: { num: string; title: string; description: string }) {
   return (
     <div className="bg-[#0E1F5B40] flex flex-col gap-2 px-7 py-4">
@@ -52,6 +53,7 @@ function ServiceCard({ num, title, description }: { num: string; title: string; 
     </div>
   );
 }
+
 
 export default function OurServices() {
   return (
