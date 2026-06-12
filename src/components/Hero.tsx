@@ -17,7 +17,6 @@ export default function Hero() {
         />
       </div>
 
-
       {/* Content */}
       <div className="relative z-10 mx-auto w-full pt-24 pb-16">
         <div className="flex flex-col lg:flex-row items-center lg:items-start">
