@@ -63,6 +63,7 @@ export default function Hero() {
             </div>
           </div>
 
+
           {/* Right - Hero Image */}
           <div className="w-full flex-1 flex justify-center lg:justify-end animate-fade-in-right">
             <div className="relative">
