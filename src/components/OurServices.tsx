@@ -74,14 +74,21 @@ export default function OurServices() {
             <img
               src="/ourservicesimage.png"
               alt="Abstract fluid art representing our creative services"
-              className="w-[380px] h-[380px] md:w-[500px] md:h-[500px] object-contain opacity-90"
+              className="w-[260px] h-[260px] md:w-[500px] md:h-[500px] object-contain opacity-90"
               loading="lazy"
             />
           </div>
 
-          {/* Grid — 4 columns, 3 rows */}
+          {/* Mobile: stacked single column */}
+          <div className="relative z-10 flex flex-col gap-8 md:hidden">
+            {services.map((service) => (
+              <ServiceCard key={service.num} {...service} />
+            ))}
+          </div>
+
+          {/* Desktop: scattered 3-column grid */}
           <div
-            className="relative z-10 grid gap-y-16 gap-x-5 md:gap-y-20 "
+            className="relative z-10 hidden md:grid gap-y-20 gap-x-5"
             style={{
               gridTemplateColumns: 'repeat(3, 1fr)',
               gridTemplateRows: 'auto auto auto',

@@ -142,22 +142,29 @@ export default function WhyChooseUs() {
             <img
               src="/whychooseusimage.png"
               alt="Abstract visualization representing Klyro's value proposition"
-              className="w-[280px] h-[280px] md:w-[340px] md:h-[340px] object-contain opacity-85"
+              className="w-[200px] h-[200px] md:w-[340px] md:h-[340px] object-contain opacity-85"
               loading="lazy"
             />
           </div>
 
-          {/* Staggered two-column layout */}
-          <div className="relative z-10 flex gap-6 md:gap-10 justify-between">
+          {/* Mobile: single-column stack */}
+          <div className="relative z-10 flex flex-col gap-6 items-center md:hidden">
+            {features.map((f, i) => (
+              <FeatureCard key={i} icon={f.icon} text={f.text} />
+            ))}
+          </div>
+
+          {/* Desktop: staggered two-column layout */}
+          <div className="relative z-10 hidden md:flex gap-10 justify-between">
             {/* Left column — cards slant to the right going down */}
-            <div className="flex flex-col gap-6 md:gap-8 pt-0">
+            <div className="flex flex-col gap-8 pt-0">
               {leftFeatures.map((f, i) => (
                 <FeatureCard key={i} icon={f.icon} text={f.text} style={{ marginLeft: leftOffsets[i] }} />
               ))}
             </div>
 
             {/* Right column — offset down + cards slant to the left going down */}
-            <div className="flex flex-col gap-6 md:gap-8 pt-12 md:pt-16 items-end">
+            <div className="flex flex-col gap-8 pt-16 items-end">
               {rightFeatures.map((f, i) => (
                 <FeatureCard key={i} icon={f.icon} text={f.text} style={{ marginRight: Math.abs(rightOffsets[i]) }} />
               ))}
