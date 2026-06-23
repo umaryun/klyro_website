@@ -1,22 +1,19 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import OurFocus from './components/OurFocus';
-import AboutUs from './components/AboutUs';
-import OurServices from './components/OurServices';
-import WhyChooseUs from './components/WhyChooseUs';
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
-      <main>
-        <Hero />
-        <OurFocus />
-        <AboutUs />
-        <OurServices />
-        <WhyChooseUs />
-      </main>
-    </>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

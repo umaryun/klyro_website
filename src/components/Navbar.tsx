@@ -1,14 +1,44 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/', section: null },
+  { label: 'About', href: '/#about', section: 'about' },
+  { label: 'Services', href: '/#services', section: 'services' },
+  { label: 'Contact', href: '/contact', section: null },
 ];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, link: (typeof navLinks)[number]) => {
+      if (link.section) {
+        e.preventDefault();
+        if (location.pathname === '/') {
+          // Already on home page — just scroll to section
+          const el = document.getElementById(link.section);
+          el?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          // Navigate to home first, then scroll after render
+          navigate('/');
+          setTimeout(() => {
+            const el = document.getElementById(link.section!);
+            el?.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
+      setMobileOpen(false);
+    },
+    [location.pathname, navigate]
+  );
+
+  const isActive = (link: (typeof navLinks)[number]) => {
+    if (link.section) return false;
+    return location.pathname === link.href;
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#0707074D] backdrop-blur-sm">
@@ -17,33 +47,48 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2.5 group" id="nav-logo">
+        <Link to="/" className="flex items-center gap-2.5 group" id="nav-logo">
           <img src="/klyrologo.png" alt="logo" className='w-22'/>
-        </a>
+        </Link>
 
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <li key={link.label}>
-              <a
-                href={link.href}
-                id={`nav-${link.label.toLowerCase()}`}
-                className="text-[15px] font-medium text-klyro-text/80 transition-colors duration-200 hover:text-white relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-klyro-blue after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {link.label}
-              </a>
+              {link.section ? (
+                <a
+                  href={link.href}
+                  id={`nav-${link.label.toLowerCase()}`}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className="text-[15px] font-medium text-klyro-text/80 transition-colors duration-200 hover:text-white relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-klyro-blue after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  to={link.href}
+                  id={`nav-${link.label.toLowerCase()}`}
+                  className={`text-[15px] font-medium transition-colors duration-200 hover:text-white relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-klyro-blue after:transition-all after:duration-300 hover:after:w-full ${
+                    isActive(link)
+                      ? 'text-white after:w-full'
+                      : 'text-klyro-text/80'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
 
         {/* CTA Button */}
-        <a
-          href="#contact"
+        <Link
+          to="/contact"
           id="nav-get-started"
           className="hidden md:inline-flex items-center justify-center rounded-lg bg-klyro-blue px-6 py-2.5 text-[14px] font-medium text-white backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(74,124,255,0.15)]"
         >
           Get Started
-        </a>
+        </Link>
 
         {/* Mobile Menu Button */}
         <button
@@ -68,23 +113,35 @@ export default function Navbar() {
           <ul className="flex flex-col gap-5">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="text-[15px] font-medium text-klyro-text/80 transition-colors duration-200 hover:text-white"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </a>
+                {link.section ? (
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link)}
+                    className="text-[15px] font-medium text-klyro-text/80 transition-colors duration-200 hover:text-white cursor-pointer"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className={`text-[15px] font-medium transition-colors duration-200 hover:text-white ${
+                      isActive(link) ? 'text-white' : 'text-klyro-text/80'
+                    }`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
             <li>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="inline-flex items-center justify-center rounded-lg bg-klyro-blue px-6 py-2.5 text-[14px] font-medium text-white transition-all duration-300 hover:bg-klyro-accent"
                 onClick={() => setMobileOpen(false)}
               >
                 Get Started
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

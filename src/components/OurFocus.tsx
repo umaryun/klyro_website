@@ -312,7 +312,7 @@ export default function OurFocus() {
   return (
     <section
       ref={containerRef}
-      className="relative h-[610vh] bg-[#0d1117] text-white"
+      className="relative h-[300vh] bg-[#0d1117] text-white"
     >
       <div className="sticky top-0 h-screen w-full flex flex-col items-center overflow-hidden">
         {/* Header */}
@@ -392,18 +392,18 @@ export default function OurFocus() {
 // Each item covers the FULL [0,1] range with opacity pinned to 0 outside its active zone.
 // This prevents useTransform from extrapolating non-zero values outside the defined range.
 const imageAnimations = [
-  //  Item 0: visible 0–0.28, fades out 0.28–0.33, stays at 0 after
-  { input: [0, 0.28, 0.33, 0.34, 1.0], opacity: [1, 1, 0, 0, 0], scale: [1, 1, 0.85, 0.85, 0.85] },
-  //  Item 1: 0 before, fades in 0.33–0.38, visible 0.38–0.61, fades out 0.61–0.66, 0 after
-  { input: [0, 0.32, 0.33, 0.38, 0.61, 0.66, 0.67, 1.0], opacity: [0, 0, 0, 1, 1, 0, 0, 0], scale: [0.85, 0.85, 0.85, 1, 1, 0.85, 0.85, 0.85] },
-  //  Item 2: 0 before, fades in 0.66–0.71, visible until end
-  { input: [0, 0.65, 0.66, 0.71, 1.0], opacity: [0, 0, 0, 1, 1], scale: [0.85, 0.85, 0.85, 1, 1] },
+  //  Item 0: visible 0–0.12, fades out 0.12–0.16
+  { input: [0, 0.12, 0.16, 0.17, 1.0], opacity: [1, 1, 0, 0, 0], scale: [1, 1, 0.85, 0.85, 0.85] },
+  //  Item 1: fades in 0.16–0.20, visible 0.20–0.28, fades out 0.28–0.32
+  { input: [0, 0.15, 0.16, 0.20, 0.28, 0.32, 0.33, 1.0], opacity: [0, 0, 0, 1, 1, 0, 0, 0], scale: [0.85, 0.85, 0.85, 1, 1, 0.85, 0.85, 0.85] },
+  //  Item 2: fades in 0.32–0.36, visible until end
+  { input: [0, 0.31, 0.32, 0.36, 1.0], opacity: [0, 0, 0, 1, 1], scale: [0.85, 0.85, 0.85, 1, 1] },
 ];
 
 const textAnimations = [
-  { input: [0, 0.28, 0.33, 0.34, 1.0], opacity: [1, 1, 0, 0, 0], y: [0, 0, -60, -60, -60] },
-  { input: [0, 0.32, 0.33, 0.38, 0.61, 0.66, 0.67, 1.0], opacity: [0, 0, 0, 1, 1, 0, 0, 0], y: [60, 60, 60, 0, 0, -60, -60, -60] },
-  { input: [0, 0.65, 0.66, 0.71, 1.0], opacity: [0, 0, 0, 1, 1], y: [60, 60, 60, 0, 0] },
+  { input: [0, 0.12, 0.16, 0.17, 1.0], opacity: [1, 1, 0, 0, 0], y: [0, 0, -60, -60, -60] },
+  { input: [0, 0.15, 0.16, 0.20, 0.28, 0.32, 0.33, 1.0], opacity: [0, 0, 0, 1, 1, 0, 0, 0], y: [60, 60, 60, 0, 0, -60, -60, -60] },
+  { input: [0, 0.31, 0.32, 0.36, 1.0], opacity: [0, 0, 0, 1, 1], y: [60, 60, 60, 0, 0] },
 ];
 
 function FocusImage({ data, index, scrollYProgress }: any) {
