@@ -119,7 +119,7 @@ export default function ContactPage() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-lg border border-[#FDFDFF40] bg-[#FDFDFF1A] px-4 py-3.5 text-[14px] text-white placeholder:text-klyro-text/30 outline-none transition-all duration-200 focus:border-klyro-cta/50 focus:ring-1 focus:ring-[#6EB3FFCC]"
+                  className="w-full rounded-lg border border-[#FDFDFF40] bg-[#FDFDFF1A] px-4 py-3.5 text-[16px] text-white placeholder:text-klyro-text/30 outline-none transition-all duration-200 focus:border-klyro-cta/50 focus:ring-1 focus:ring-[#6EB3FFCC]"
                 />
                 <input
                   type="email"
@@ -129,7 +129,7 @@ export default function ContactPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-lg border border-[#FDFDFF40] bg-[#FDFDFF1A] px-4 py-3.5 text-[14px] text-white placeholder:text-klyro-text/30 outline-none transition-all duration-200 focus:border-klyro-cta/50 focus:ring-1 focus:ring-[#6EB3FFCC]"
+                  className="w-full rounded-lg border border-[#FDFDFF40] bg-[#FDFDFF1A] px-4 py-3.5 text-[16px] text-white placeholder:text-klyro-text/30 outline-none transition-all duration-200 focus:border-klyro-cta/50 focus:ring-1 focus:ring-[#6EB3FFCC]"
                 />
                 <input
                   type="text"
@@ -138,7 +138,7 @@ export default function ContactPage() {
                   placeholder="Company Name (opt)"
                   value={formData.company}
                   onChange={handleChange}
-                  className="w-full rounded-lg border border-[#FDFDFF40] bg-[#FDFDFF1A] px-4 py-3.5 text-[14px] text-white placeholder:text-klyro-text/30 outline-none transition-all duration-200 focus:border-klyro-cta/50 focus:ring-1 focus:ring-[#6EB3FFCC]"
+                  className="w-full rounded-lg border border-[#FDFDFF40] bg-[#FDFDFF1A] px-4 py-3.5 text-[16px] text-white placeholder:text-klyro-text/30 outline-none transition-all duration-200 focus:border-klyro-cta/50 focus:ring-1 focus:ring-[#6EB3FFCC]"
                 />
                 <textarea
                   name="message"
@@ -148,7 +148,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full resize-none rounded-lg border border-[#FDFDFF40] bg-[#FDFDFF1A] px-4 py-3.5 text-[14px] text-white placeholder:text-klyro-text/30 outline-none transition-all duration-200 focus:border-klyro-cta/50 focus:ring-1 focus:ring-[#6EB3FFCC]"
+                  className="w-full resize-none rounded-lg border border-[#FDFDFF40] bg-[#FDFDFF1A] px-4 py-3.5 text-[16px] text-white placeholder:text-klyro-text/30 outline-none transition-all duration-200 focus:border-klyro-cta/50 focus:ring-1 focus:ring-[#6EB3FFCC]"
                 />
                 <button
                   type="submit"
