@@ -23,7 +23,7 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center lg:items-start">
           {/* Left Content */}
           <div className="flex-1">
-            <div className=''>
+            <div className='px-5'>
               {/* Heading */}
               <h1 className="font-[var(--font-heading)] max-w-[460px] mx-auto">
                 <span className="block text-[clamp(3rem,7vw,5rem)] font-bold italic leading-[1.1] tracking-tight text-white animate-fade-in-up">
